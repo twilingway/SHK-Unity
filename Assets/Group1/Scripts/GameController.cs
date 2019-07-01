@@ -4,35 +4,59 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController controller;
+    public GameObject GameOver;
+    public GameObject Player;
 
-    public GameObject go;
-    public GameObject a;
-    public GameObject[] B;
-
-    // Start is called before the first frame update
+    private GameObject[] _enemys;
+   
     void Start()
     {
-        controller = this;
+        _enemys = GameObject.FindGameObjectsWithTag("Enemy");
+    }
+
+    void Update()
+    {
+        int size = _enemys.Length;
+        foreach (var enemy in _enemys)
+        {
+            if (enemy == null)
+            {
+                size--;
+                continue;
+            }
+
+            if (Vector3.Distance(Player.transform.position, enemy.transform.position) < 0.2f)
+            {
+                CheckObjectName(enemy);
+            }
+        }
+
+        if (size == 0)
+        {
+            End();
+            enabled = false;
+        }
     }
 
     public void End()
     {
-        go.SetActive(true);
+        GameOver.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update(){
-        foreach (var b in B)
+    public void CheckObjectName(GameObject someObject)
+    {
+        if (someObject.name == "Speed")
+        {   
+            var player  = Player.GetComponent<KeyboardInput>();
+            player.AddSpeed(2);
+            player.AddTime(20);
+            player.SetTimer(true);
+            Destroy(someObject);
+        }
+
+        if (someObject.name == "Enemy")
         {
-            if (b == null)
-                continue;
-
-                if (Vector3.Distance(a.gameObject.gameObject.GetComponent<Transform>().position, b.gameObject.gameObject.transform.position) < 0.2f)
-                {
-                    a.SendMessage("SendMEssage", b);
-                }
-
+            Destroy(someObject);
         }
     }
 }
