@@ -3,9 +3,9 @@ using System.Collections;
 
 public class KeyboardInput : MonoBehaviour
 {
-    public float Speed = 5f;
-    public bool Timer = true;
-    public float Time = 20f;
+    [SerializeField] private float _speed = 5f;
+    [SerializeField] private bool _timer = true;
+    [SerializeField] private float _time = 20f;
 
     void Update()
     {
@@ -15,42 +15,42 @@ public class KeyboardInput : MonoBehaviour
 
     private void TakeTime()
     {
-        if (Timer)
+        if (_timer)
         {
-            Time -= UnityEngine.Time.deltaTime;
-            if (Time < 0)
+            _time -= Time.deltaTime;
+            if (_time < 0)
             {
-                Timer = false;
-                Speed /= 2;
+                _timer = false;
+                _speed /= 2;
             }
         }
     }
 
     public void AddSpeed(float speed)
     {
-        Speed *= speed;
+        _speed *= speed;
     }
     public void AddTime(float time)
     {
-        Time += time;
+        _time += time;
     }
     public void SetTimer(bool timer)
     {
-        Timer = timer;
+        _timer = timer;
     }
 
     private void Mover()
     {
         if (Input.GetKey(KeyCode.W))
-            transform.Translate(0, Speed * UnityEngine.Time.deltaTime, 0);
+            transform.Translate(0, _speed * Time.deltaTime, 0);
 
         if (Input.GetKey(KeyCode.S))
-            transform.Translate(0, -Speed * UnityEngine.Time.deltaTime, 0);
+            transform.Translate(0, -_speed * Time.deltaTime, 0);
 
         if (Input.GetKey(KeyCode.A))
-            transform.Translate(-Speed * UnityEngine.Time.deltaTime, 0, 0);
+            transform.Translate(-_speed * Time.deltaTime, 0, 0);
 
         if (Input.GetKey(KeyCode.D))
-            transform.Translate(Speed * UnityEngine.Time.deltaTime, 0, 0);
+            transform.Translate(_speed * Time.deltaTime, 0, 0);
     }
 }
