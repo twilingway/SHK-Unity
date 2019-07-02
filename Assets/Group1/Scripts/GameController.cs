@@ -33,12 +33,12 @@ public class GameController : MonoBehaviour
 
         if (size == 0)
         {
-            End();
+            ShowGameOver();
             enabled = false;
         }
     }
 
-    public void End()
+    public void ShowGameOver()
     {
         GameOver.SetActive(true);
     }

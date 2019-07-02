@@ -10,7 +10,7 @@ public class KeyboardInput : MonoBehaviour
     void Update()
     {
         TakeTime();
-        Mover();
+        Move();
     }
 
     private void TakeTime()
@@ -39,7 +39,7 @@ public class KeyboardInput : MonoBehaviour
         _timer = timer;
     }
 
-    private void Mover()
+    private void Move()
     {
         if (Input.GetKey(KeyCode.W))
             transform.Translate(0, _speed * Time.deltaTime, 0);
