@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class RandomMover : MonoBehaviour
 {
+    [SerializeField] private float _speed = 2f;
+    [SerializeField] private float _radius = 10f;
+
     private Vector3 _target;
 
-    void Start()
+    private void Start()
     {
-        _target = Random.insideUnitCircle * 4;
+        _target = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _target, 2 * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
         if (transform.position == _target)
         {
-            _target = Random.insideUnitCircle * 4;
+            _target = Random.insideUnitCircle * _radius;
         }
     }
 }
