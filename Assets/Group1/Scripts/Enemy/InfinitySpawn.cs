@@ -2,35 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public delegate void EventDelegate();
-
 public class InfinitySpawn : MonoBehaviour
 {
-    public GameObject EnemyPrefab;
-    public GameObject EnemyPrefabWithSpeed;
-    public Transform SpawnPoint;
-    public Player Player;
-    public int SpawnCount;
-    public List<Enemy> Enemies = new List<Enemy>();
 
-    public static InfinitySpawn Instance;
 
-    public void Awake()
+    [SerializeField] private GameObject EnemyPrefab;
+    [SerializeField] private GameObject EnemyPrefabWithSpeed;
+    [SerializeField] private Transform SpawnPoint;
+    [SerializeField] private Player Player;
+    [SerializeField] private int SpawnCount;
+    [SerializeField] private List<Enemy> _enemies = new List<Enemy>();
+
+    private void Awake()
     {
-        Instance = this;
-
         foreach (Enemy e in GameObject.FindObjectsOfType<Enemy>())
         {
             e.OnDead += ObjectDeadHandler;
             e.OnDead += Player.EnemyCollisionHandler;
-            Enemies.Add(e);
+            _enemies.Add(e);
         };
     }
 
     public void ObjectDeadHandler(Enemy owner)
     {
-        Enemies.Remove(owner);
+        _enemies.Remove(owner);
         SpawnCount--;
         SpawnEnemy();
     }
@@ -51,7 +46,19 @@ public class InfinitySpawn : MonoBehaviour
             Enemy enemy = newObject.GetComponent<Enemy>();
             enemy.OnDead += ObjectDeadHandler;
             enemy.OnDead += Player.EnemyCollisionHandler;
-            Enemies.Add(enemy);
+            _enemies.Add(enemy);
         }
     }
+
+    public List<Enemy> GetEnemies()
+    {
+        return _enemies;
+    }
+
+    public Enemy GetEnemy(int enemy)
+    {
+        return _enemies[enemy];
+    }
+
+
 }

@@ -12,9 +12,7 @@ public class Player : MonoBehaviour
     {
         if (enemy.Name == "EnemyWithSpeed")
         {
-            AddSpeed(enemy.GetSpeed());
-            AddTime(enemy.GetTime());
-            SetTimer(true);
+            AddBounty(enemy.SpeedBounty, enemy.TimeBounty, true);
         }
     }
 
@@ -36,17 +34,13 @@ public class Player : MonoBehaviour
             }
         }
     }
-    public void AddSpeed(float speed)
+
+    public void AddBounty(float speed, float time, bool timer)
     {
         _speed *= speed;
-    }
-    public void AddTime(float time)
-    {
         _time += time;
-    }
-    public void SetTimer(bool timer)
-    {
         _timer = timer;
+
     }
     private void Move()
     {

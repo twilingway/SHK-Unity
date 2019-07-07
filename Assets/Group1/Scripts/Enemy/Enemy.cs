@@ -5,20 +5,36 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
-    private bool _isLive = true;
-    
-    public string Name;
+    public event UnityAction<Enemy> OnDead;
+
+    [SerializeField] private string _name;
     [SerializeField] private int _speedBounty = 1;
     [SerializeField] private float _timeBounty = 0f;
 
-    public int GetSpeed()
+    private bool _isLive = true;
+
+    public string Name
     {
-        return _speedBounty;
+        get
+        {
+            return _name;
+        }
     }
 
-    public float GetTime()
+    public int SpeedBounty
     {
-        return _timeBounty;
+        get
+        {
+            return _speedBounty;
+        }
+    }
+
+    public float TimeBounty
+    {
+        get
+        {
+            return _timeBounty;
+        }
     }
 
     public bool IsLive
@@ -27,19 +43,18 @@ public class Enemy : MonoBehaviour
         {
             return _isLive;
         }
-        set
+    }
+
+    public void SetIsLive(bool isLive)
+    {
+        _isLive = isLive;
+        if (_isLive == false)
         {
-            _isLive = value;
-            if (_isLive == false)
+            Destroy(gameObject);
+            if (OnDead != null)
             {
-                Destroy(gameObject);
-                if (OnDead != null)
-                {
-                    OnDead(this);
-                }
+                OnDead(this);
             }
         }
     }
-
-    public event UnityAction<Enemy> OnDead;
 }
