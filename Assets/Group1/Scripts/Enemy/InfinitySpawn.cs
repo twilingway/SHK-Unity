@@ -1,16 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InfinitySpawn : MonoBehaviour
 {
-
-
-    [SerializeField] private GameObject EnemyPrefab;
-    [SerializeField] private GameObject EnemyPrefabWithSpeed;
-    [SerializeField] private Transform SpawnPoint;
-    [SerializeField] private Player Player;
-    [SerializeField] private int SpawnCount;
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private GameObject _enemyPrefabWithSpeed;
+    [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private Player _player;
+    [SerializeField] private int _spawnCount;
     [SerializeField] private List<Enemy> _enemies = new List<Enemy>();
 
     private void Awake()
@@ -18,7 +17,7 @@ public class InfinitySpawn : MonoBehaviour
         foreach (Enemy e in GameObject.FindObjectsOfType<Enemy>())
         {
             e.OnDead += ObjectDeadHandler;
-            e.OnDead += Player.EnemyCollisionHandler;
+            e.OnDead += _player.AddBounty;
             _enemies.Add(e);
         };
     }
@@ -26,39 +25,27 @@ public class InfinitySpawn : MonoBehaviour
     public void ObjectDeadHandler(Enemy owner)
     {
         _enemies.Remove(owner);
-        SpawnCount--;
+        _spawnCount--;
         SpawnEnemy();
     }
 
     public void SpawnEnemy()
     {
-        if (SpawnCount > 0)
+        if (_spawnCount > 0)
         {
             GameObject newObject;
-            if (SpawnCount % 5 == 0)
+            if (_spawnCount % 5 == 0)
             {
-                newObject = Instantiate(EnemyPrefabWithSpeed, SpawnPoint.position, Quaternion.identity, SpawnPoint);
+                newObject = Instantiate(_enemyPrefabWithSpeed, _spawnPoint.position, Quaternion.identity, _spawnPoint);
             }
             else
             {
-                newObject = Instantiate(EnemyPrefab, SpawnPoint.position, Quaternion.identity, SpawnPoint);
+                newObject = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, _spawnPoint);
             }
             Enemy enemy = newObject.GetComponent<Enemy>();
             enemy.OnDead += ObjectDeadHandler;
-            enemy.OnDead += Player.EnemyCollisionHandler;
+            enemy.OnDead += _player.AddBounty;
             _enemies.Add(enemy);
         }
     }
-
-    public List<Enemy> GetEnemies()
-    {
-        return _enemies;
-    }
-
-    public Enemy GetEnemy(int enemy)
-    {
-        return _enemies[enemy];
-    }
-
-
 }

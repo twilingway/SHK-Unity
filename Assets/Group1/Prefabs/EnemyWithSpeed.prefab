@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 1806966719305284525}
   - component: {fileID: 1806966719305284524}
   - component: {fileID: 1806966719305284526}
-  - component: {fileID: 165503739960871273}
   - component: {fileID: 7693873154321194234}
+  - component: {fileID: 8261282274042230122}
   m_Layer: 0
   m_Name: EnemyWithSpeed
-  m_TagString: Enemy
+  m_TagString: Speed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,21 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   _radius: 10
---- !u!114 &165503739960871273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1806966719305284515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbc8985b9b961649bf2281faee01d56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: EnemyWithSpeed
-  _speedBounty: 2
-  _timeBounty: 20
 --- !u!65 &7693873154321194234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -124,3 +109,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8261282274042230122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806966719305284515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbc8985b9b961649bf2281faee01d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedBounty: 2
+  _timeBounty: 20

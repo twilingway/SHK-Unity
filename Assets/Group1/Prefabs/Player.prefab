@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 779808120039036937}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,8 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6d0074e725a114e850d2e604fe4b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextGameOver: {fileID: 7799754769122250359}
-  Player: {fileID: 7799754769936447316}
+  _player: {fileID: 0}
+  _distance: 0.2
 --- !u!65 &779808120039036937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -398,9 +398,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd770d6ed8d4aef4cb53f54de4dd3f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 1021457240057651083, guid: b69f31c18e3aa0c4c92a0a70a843d109,
-    type: 3}
-  EnemyPrefabWithSpeed: {fileID: 1806966719305284515, guid: 829a5c26f6d982f48a1a90b139b11f74,
-    type: 3}
-  SpawnPoint: {fileID: 0}
-  Enemies: []
+  _enemyPrefab: {fileID: 0}
+  _enemyPrefabWithSpeed: {fileID: 0}
+  _spawnPoint: {fileID: 0}
+  _player: {fileID: 0}
+  _spawnCount: 0
+  _enemies: []

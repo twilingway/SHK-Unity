@@ -8,21 +8,13 @@ public class Player : MonoBehaviour
 
     private bool _timer = true;
 
-    public void EnemyCollisionHandler(Enemy enemy)
-    {
-        if (enemy.Name == "EnemyWithSpeed")
-        {
-            AddBounty(enemy.SpeedBounty, enemy.TimeBounty, true);
-        }
-    }
-
     private void Update()
     {
-        SubtractTime();
+        SubtractBountyTime();
         Move();
     }
 
-    private void SubtractTime()
+    private void SubtractBountyTime()
     {
         if (_timer)
         {
@@ -35,33 +27,34 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AddBounty(float speed, float time, bool timer)
+    public void AddBounty(Enemy enemy)
     {
-        _speed *= speed;
-        _time += time;
-        _timer = timer;
-
-    }
-    private void Move()
-    {
-        if (Input.anyKey)
+        if (enemy.tag == "Speed")
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                transform.Translate(0, _speed * Time.deltaTime, 0);
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.Translate(0, -_speed * Time.deltaTime, 0);
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(-_speed * Time.deltaTime, 0, 0);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(_speed * Time.deltaTime, 0, 0);
-            }
+            _speed *= enemy.SpeedBounty;
+            _time += enemy.TimeBounty;
+            _timer = true;
         }
     }
+
+    private void Move()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(0, _speed * Time.deltaTime, 0);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(0, -_speed * Time.deltaTime, 0);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(-_speed * Time.deltaTime, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(_speed * Time.deltaTime, 0, 0);
+        }
+    }
+
 }
