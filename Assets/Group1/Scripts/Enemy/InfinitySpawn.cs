@@ -16,24 +16,23 @@ public class InfinitySpawn : MonoBehaviour
     {
         foreach (Enemy e in GameObject.FindObjectsOfType<Enemy>())
         {
-            e.OnDead += ObjectDeadHandler;
-            e.OnDead += _player.AddBounty;
-            _enemies.Add(e);
+            AddSubscription(e);
         };
     }
 
-    public void ObjectDeadHandler(Enemy owner)
+    private void ObjectDeadHandler(Enemy owner)
     {
         _enemies.Remove(owner);
         _spawnCount--;
         SpawnEnemy();
     }
 
-    public void SpawnEnemy()
+    private void SpawnEnemy()
     {
         if (_spawnCount > 0)
         {
             GameObject newObject;
+
             if (_spawnCount % 5 == 0)
             {
                 newObject = Instantiate(_enemyPrefabWithSpeed, _spawnPoint.position, Quaternion.identity, _spawnPoint);
@@ -42,10 +41,15 @@ public class InfinitySpawn : MonoBehaviour
             {
                 newObject = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, _spawnPoint);
             }
-            Enemy enemy = newObject.GetComponent<Enemy>();
-            enemy.OnDead += ObjectDeadHandler;
-            enemy.OnDead += _player.AddBounty;
-            _enemies.Add(enemy);
+
+            AddSubscription(newObject.GetComponent<Enemy>());
         }
+    }
+
+    private void AddSubscription(Enemy enemy)
+    {
+        enemy.OnDead += ObjectDeadHandler;
+        enemy.OnDead += _player.AddBounty;
+        _enemies.Add(enemy);
     }
 }
