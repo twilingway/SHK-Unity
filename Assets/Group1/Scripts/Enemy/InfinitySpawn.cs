@@ -41,7 +41,6 @@ public class InfinitySpawn : MonoBehaviour
             {
                 newObject = Instantiate(_enemyPrefab, _spawnPoint.position, Quaternion.identity, _spawnPoint);
             }
-
             AddSubscription(newObject.GetComponent<Enemy>());
         }
     }

@@ -56,5 +56,4 @@ public class Player : MonoBehaviour
             transform.Translate(_speed * Time.deltaTime, 0, 0);
         }
     }
-
 }

@@ -10,27 +10,17 @@ public class Enemy : MonoBehaviour
     public int SpeedBounty { get; } = 1;
     public float TimeBounty { get; } = 0f;
 
-    private bool _isLive = true;
-
-    public void Kill(bool isLive)
-    {
-        _isLive = isLive;
-        if (_isLive == false)
-        {
-           
-            if (OnDead != null)
-            {
-                OnDead(this);
-            }
-            Destroy(gameObject);
-        }
+    public void Kill()
+    {   
+        Destroy(gameObject);
+        OnDead?.Invoke(this);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            Kill(false);
+            Kill();
         }
     }
 }
