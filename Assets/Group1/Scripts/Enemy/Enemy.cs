@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IEnemy
+
 {
     public event UnityAction<Enemy> OnDead;
 
-    public int SpeedBounty { get; } = 1;
-    public float TimeBounty { get; } = 0f;
+    [SerializeField] private int _speedBounty = 1;
+    [SerializeField] private float _timeBounty = 0f;
+    [SerializeField] private EnemyType _type;
+
+    public int SpeedBounty => _speedBounty;
+    public float TimeBounty => _timeBounty;
+    public EnemyType Type => _type;
 
     public void Kill()
-    {   
+    {
         Destroy(gameObject);
         OnDead?.Invoke(this);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {

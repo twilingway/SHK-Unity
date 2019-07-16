@@ -323,14 +323,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd770d6ed8d4aef4cb53f54de4dd3f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 1021457240057651083, guid: b69f31c18e3aa0c4c92a0a70a843d109,
-    type: 3}
-  _enemyPrefabWithSpeed: {fileID: 1806966719305284515, guid: 829a5c26f6d982f48a1a90b139b11f74,
-    type: 3}
+  _prefabs:
+  - {fileID: 1021457240057651083, guid: b69f31c18e3aa0c4c92a0a70a843d109, type: 3}
+  - {fileID: 1806966719305284515, guid: 829a5c26f6d982f48a1a90b139b11f74, type: 3}
   _spawnPoint: {fileID: 1633865616}
   _player: {fileID: 110964821}
   _spawnCount: 11
   _enemies: []
+--- !u!1 &1880534943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1806966719305284515, guid: 829a5c26f6d982f48a1a90b139b11f74,
+    type: 3}
+  m_PrefabInstance: {fileID: 1806966718257252932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1880534944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880534943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbc8985b9b961649bf2281faee01d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedBounty: 1
+  _timeBounty: 0
+  _type: 1
 --- !u!1001 &1021457240497383056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -478,7 +498,8 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8261282274042230122, guid: 829a5c26f6d982f48a1a90b139b11f74, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 829a5c26f6d982f48a1a90b139b11f74, type: 3}
 --- !u!1001 &7799754769910023942
 PrefabInstance:

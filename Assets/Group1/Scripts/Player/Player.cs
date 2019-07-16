@@ -10,31 +10,28 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        SubtractBountyTime();
+        if (_timer)
+        {
+            SubtractBountyTime(Time.deltaTime);
+        }
         Move();
     }
 
-    private void SubtractBountyTime()
+    private void SubtractBountyTime(float time)
     {
-        if (_timer)
-        {
-            _time -= Time.deltaTime;
-            if (_time < 0)
-            {
-                _timer = false;
-                _speed /= 2;
-            }
+        _time -= time;
+        if (_time < 0)
+        {   
+            _speed /= 2;
+            _timer = false;
         }
     }
 
     public void AddBounty(Enemy enemy)
     {
-        if (enemy.tag == "Speed")
-        {
-            _speed *= enemy.SpeedBounty;
-            _time += enemy.TimeBounty;
-            _timer = true;
-        }
+        _speed *= enemy.SpeedBounty;
+        _time += enemy.TimeBounty;
+        _timer = true;
     }
 
     private void Move()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1806966719305284524}
   - component: {fileID: 1806966719305284526}
   - component: {fileID: 7693873154321194234}
-  - component: {fileID: 8261282274042230122}
+  - component: {fileID: 8686525940100752397}
   m_Layer: 0
   m_Name: EnemyWithSpeed
   m_TagString: Speed
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8261282274042230122
+--- !u!114 &8686525940100752397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,3 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedBounty: 2
   _timeBounty: 20
+  _type: 1

@@ -11,7 +11,7 @@ public class RandomMover : MonoBehaviour
 
     private void Start()
     {
-        SetTargetPosition();
+        _target = GetRandomTarget();
     }
 
     private void Update()
@@ -19,12 +19,12 @@ public class RandomMover : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
         if (transform.position == _target)
         {
-            SetTargetPosition();
+            _target = GetRandomTarget();
         }
     }
 
-    private void SetTargetPosition()
+    private Vector3 GetRandomTarget()
     {
-        _target = Random.insideUnitCircle * _radius;
+        return Random.insideUnitCircle * _radius;
     }
 }
