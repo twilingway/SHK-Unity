@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Player _player;
     [SerializeField] private int _spawnCount;
-    [SerializeField] private List<IEnemy> _enemies = new List<IEnemy>();
+    [SerializeField] private List<Enemy> _enemies = new List<Enemy>();
 
     private void Awake()
     {
@@ -32,11 +32,11 @@ public class EnemySpawner : MonoBehaviour
         {
             if (_spawnCount % 5 == 0)
             {
-                GetEnemy(EnemyType.Default);
+                AddEnemy(EnemyType.Default);
             }
             else
             {
-                GetEnemy(EnemyType.WithSpeed);
+                AddEnemy(EnemyType.WithSpeed);
             }
         }
     }
@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
         _enemies.Add(enemy);
     }
 
-    public void GetEnemy(EnemyType enemyTypes)
+    public void AddEnemy(EnemyType enemyTypes)
     {
         switch (enemyTypes)
         {

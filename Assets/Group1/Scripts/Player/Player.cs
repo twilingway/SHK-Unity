@@ -6,11 +6,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _time = 20f;
 
-    private bool _timer = true;
+    private bool IsTimerOn => _time >= 0;
 
     private void Update()
     {
-        if (_timer)
+        if (IsTimerOn)
         {
             SubtractBountyTime(Time.deltaTime);
         }
@@ -21,9 +21,8 @@ public class Player : MonoBehaviour
     {
         _time -= time;
         if (_time < 0)
-        {   
+        {
             _speed /= 2;
-            _timer = false;
         }
     }
 
@@ -31,7 +30,6 @@ public class Player : MonoBehaviour
     {
         _speed *= enemy.SpeedBounty;
         _time += enemy.TimeBounty;
-        _timer = true;
     }
 
     private void Move()
