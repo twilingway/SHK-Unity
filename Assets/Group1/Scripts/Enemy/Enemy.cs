@@ -10,10 +10,12 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private int _speedBounty = 1;
     [SerializeField] private float _timeBounty = 0f;
+    [SerializeField] private Vector3 _interectionBounty = new Vector3(2f,2f,1f);
     [SerializeField] private EnemyType _type;
 
     public int SpeedBounty => _speedBounty;
     public float TimeBounty => _timeBounty;
+    public Vector3 InterectionBounty => _interectionBounty;
     public EnemyType Type => _type;
 
     public void Kill()

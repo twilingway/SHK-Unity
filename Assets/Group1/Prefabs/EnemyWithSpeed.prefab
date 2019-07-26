@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f7df4705b7dae48944a39b48934484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _radius: 10
+  _speed: 5
+  _radius: 15
 --- !u!65 &7693873154321194234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,4 +123,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedBounty: 2
   _timeBounty: 20
+  _interectionBounty: {x: 2, y: 2, z: 1}
   _type: 1

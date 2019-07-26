@@ -181,6 +181,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &267191568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 267191569}
+  - component: {fileID: 267191570}
+  - component: {fileID: 267191571}
+  - component: {fileID: 267191572}
+  m_Layer: 0
+  m_Name: Arena
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &267191569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267191568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &267191570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267191568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7099d913d3a80c4b9944cd0e7e6dc9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sizeOverScreen: {x: 10, y: 10, z: 0}
+  _camera: {fileID: 800961701}
+  _player: {fileID: 369352262}
+--- !u!65 &267191571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267191568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &267191572
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267191568}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &369352262 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 6677218753825015765, guid: 5f0525a020a5d5245842850b00b6407b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6677218753395996444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &800961701 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6677218753238422354, guid: 5f0525a020a5d5245842850b00b6407b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6677218753395996444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1509537919
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,6 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedBounty: 1
   _timeBounty: 0
+  _interectionBounty: {x: 2, y: 2, z: 1}
   _type: 1
 --- !u!1001 &1021457240497383056
 PrefabInstance:
@@ -447,6 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8261282274042230122, guid: 829a5c26f6d982f48a1a90b139b11f74, type: 3}
+    - {fileID: 8686525940100752397, guid: 829a5c26f6d982f48a1a90b139b11f74, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 829a5c26f6d982f48a1a90b139b11f74, type: 3}
 --- !u!1001 &6677218753395996444
 PrefabInstance:
@@ -524,6 +615,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677218753238422352, guid: 5f0525a020a5d5245842850b00b6407b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677218753238422352, guid: 5f0525a020a5d5245842850b00b6407b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677218753238422354, guid: 5f0525a020a5d5245842850b00b6407b,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677218753238422354, guid: 5f0525a020a5d5245842850b00b6407b,
+        type: 3}
+      propertyPath: far clip plane
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f0525a020a5d5245842850b00b6407b, type: 3}
